@@ -146,7 +146,10 @@ namespace LogKeeper
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(txtOutput.Text);
+            if (txtOutput.Text.Length > 0)
+            {
+                Clipboard.SetText(txtOutput.Text);
+            }
         }
 
         private void btnReset_Click(object sender, EventArgs e)
