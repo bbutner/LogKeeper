@@ -39,9 +39,9 @@ namespace LogKeeper
         {
             if (txtProject.TextLength > 0 && cmbName.Text.Length > 0 && txtLogMessage.Text.Length > 0)
             {
-                string name = cmbName.Text;
-                string project = txtProject.Text;
-                string log = txtLogMessage.Text;
+                string name = cmbName.Text.Trim();
+                string project = txtProject.Text.Trim();
+                string log = txtLogMessage.Text.Trim();
 
                 SqlConnection tempCon = Config.getSQLCon();
 
@@ -53,6 +53,7 @@ namespace LogKeeper
 
                     SqlCommand insertLog = new SqlCommand(sqlInsert, tempCon);
                     insertLog.ExecuteReader();
+                    tempCon.Close();
 
                     txtLogMessage.ResetText();
                 }
@@ -72,7 +73,26 @@ namespace LogKeeper
         {
             if (txtProject.Text.Length > 0)
             {
+                SqlConnection tempCon = Config.getSQLCon();
 
+                tempCon.Open();
+                string sqlLoad = "SELECT * FROM logs WHERE project='" + txtProject.Text + "'";
+                SqlCommand loadLogs = new SqlCommand(sqlLoad, tempCon);
+                SqlDataReader reader = loadLogs.ExecuteReader();
+
+                txtOutput.ResetText();
+
+                try
+                {
+                    while (reader.Read())
+                    {
+                        txtOutput.Text += reader["timestamp"] + " #" + reader["project"] + " | " + reader["name"].ToString().Trim() + ": " + reader["logmessage"] + "\r\n";
+                    }
+                }
+                finally
+                {
+                    reader.Close();
+                }
             }
             else
             {
