@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtProject = new System.Windows.Forms.TextBox();
             this.btnSearchProjects = new System.Windows.Forms.Button();
+            this.btnCopy = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -141,11 +142,22 @@
             this.btnSearchProjects.UseVisualStyleBackColor = true;
             this.btnSearchProjects.Click += new System.EventHandler(this.btnSearchProjects_Click);
             // 
+            // btnCopy
+            // 
+            this.btnCopy.Location = new System.Drawing.Point(1256, 573);
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Size = new System.Drawing.Size(113, 37);
+            this.btnCopy.TabIndex = 8;
+            this.btnCopy.Text = "Copy";
+            this.btnCopy.UseVisualStyleBackColor = true;
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1381, 622);
+            this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.groupBox1);
             this.Name = "Main";
@@ -170,6 +182,7 @@
         private System.Windows.Forms.TextBox txtLogMessage;
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button btnSearchProjects;
+        private System.Windows.Forms.Button btnCopy;
     }
 }
 

@@ -143,5 +143,10 @@ namespace LogKeeper
             ProjectSearch projSearch = new ProjectSearch();
             projSearch.ShowDialog();
         }
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txtOutput.Text);
+        }
     }
 }
