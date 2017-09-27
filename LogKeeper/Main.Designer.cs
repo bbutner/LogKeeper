@@ -28,31 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            this.txtOutput = new System.Windows.Forms.TextBox();
             this.btnAddLog = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnShowConfig = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnSearchProjects = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
             this.txtLogMessage = new System.Windows.Forms.TextBox();
             this.cmbName = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtProject = new System.Windows.Forms.TextBox();
-            this.btnSearchProjects = new System.Windows.Forms.Button();
             this.btnCopy = new System.Windows.Forms.Button();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.btnShowConfig = new System.Windows.Forms.Button();
+            this.txtOutput = new System.Windows.Forms.DataGridView();
+            this.colProj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOutput)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtOutput
-            // 
-            this.txtOutput.Location = new System.Drawing.Point(652, 11);
-            this.txtOutput.Multiline = true;
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.ReadOnly = true;
-            this.txtOutput.Size = new System.Drawing.Size(717, 551);
-            this.txtOutput.TabIndex = 1;
             // 
             // btnAddLog
             // 
@@ -82,6 +82,36 @@
             this.groupBox1.Size = new System.Drawing.Size(634, 605);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // btnShowConfig
+            // 
+            this.btnShowConfig.Location = new System.Drawing.Point(512, 59);
+            this.btnShowConfig.Name = "btnShowConfig";
+            this.btnShowConfig.Size = new System.Drawing.Size(113, 27);
+            this.btnShowConfig.TabIndex = 10;
+            this.btnShowConfig.Text = "Config";
+            this.btnShowConfig.UseVisualStyleBackColor = true;
+            this.btnShowConfig.Click += new System.EventHandler(this.btnShowConfig_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(512, 16);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(113, 27);
+            this.btnReset.TabIndex = 9;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // btnSearchProjects
+            // 
+            this.btnSearchProjects.Location = new System.Drawing.Point(253, 18);
+            this.btnSearchProjects.Name = "btnSearchProjects";
+            this.btnSearchProjects.Size = new System.Drawing.Size(21, 22);
+            this.btnSearchProjects.TabIndex = 7;
+            this.btnSearchProjects.Text = "?";
+            this.btnSearchProjects.UseVisualStyleBackColor = true;
+            this.btnSearchProjects.Click += new System.EventHandler(this.btnSearchProjects_Click);
             // 
             // btnLoad
             // 
@@ -137,19 +167,9 @@
             this.txtProject.Size = new System.Drawing.Size(186, 20);
             this.txtProject.TabIndex = 1;
             // 
-            // btnSearchProjects
-            // 
-            this.btnSearchProjects.Location = new System.Drawing.Point(253, 18);
-            this.btnSearchProjects.Name = "btnSearchProjects";
-            this.btnSearchProjects.Size = new System.Drawing.Size(21, 22);
-            this.btnSearchProjects.TabIndex = 7;
-            this.btnSearchProjects.Text = "?";
-            this.btnSearchProjects.UseVisualStyleBackColor = true;
-            this.btnSearchProjects.Click += new System.EventHandler(this.btnSearchProjects_Click);
-            // 
             // btnCopy
             // 
-            this.btnCopy.Location = new System.Drawing.Point(1256, 573);
+            this.btnCopy.Location = new System.Drawing.Point(1360, 573);
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(113, 37);
             this.btnCopy.TabIndex = 8;
@@ -157,33 +177,73 @@
             this.btnCopy.UseVisualStyleBackColor = true;
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
-            // btnReset
+            // txtOutput
             // 
-            this.btnReset.Location = new System.Drawing.Point(512, 16);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(113, 27);
-            this.btnReset.TabIndex = 9;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.txtOutput.AllowUserToAddRows = false;
+            this.txtOutput.AllowUserToDeleteRows = false;
+            this.txtOutput.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.txtOutput.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.txtOutput.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colProj,
+            this.colName,
+            this.colLog,
+            this.colTime});
+            this.txtOutput.Location = new System.Drawing.Point(652, 11);
+            this.txtOutput.Name = "txtOutput";
+            this.txtOutput.RowHeadersVisible = false;
+            this.txtOutput.Size = new System.Drawing.Size(821, 550);
+            this.txtOutput.TabIndex = 9;
+            this.txtOutput.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.txtOutput_CellContentClick);
             // 
-            // btnShowConfig
+            // colProj
             // 
-            this.btnShowConfig.Location = new System.Drawing.Point(512, 59);
-            this.btnShowConfig.Name = "btnShowConfig";
-            this.btnShowConfig.Size = new System.Drawing.Size(113, 27);
-            this.btnShowConfig.TabIndex = 10;
-            this.btnShowConfig.Text = "Config";
-            this.btnShowConfig.UseVisualStyleBackColor = true;
-            this.btnShowConfig.Click += new System.EventHandler(this.btnShowConfig_Click);
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colProj.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colProj.FillWeight = 60F;
+            this.colProj.HeaderText = "Project";
+            this.colProj.Name = "colProj";
+            this.colProj.ReadOnly = true;
+            this.colProj.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // colName
+            // 
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colName.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colName.FillWeight = 110.6774F;
+            this.colName.HeaderText = "Name";
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            this.colName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // colLog
+            // 
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colLog.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colLog.FillWeight = 21.08025F;
+            this.colLog.HeaderText = "Log";
+            this.colLog.Name = "colLog";
+            this.colLog.ReadOnly = true;
+            this.colLog.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colLog.Width = 472;
+            // 
+            // colTime
+            // 
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colTime.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colTime.FillWeight = 203.0457F;
+            this.colTime.HeaderText = "Timestamp";
+            this.colTime.Name = "colTime";
+            this.colTime.ReadOnly = true;
+            this.colTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colTime.Width = 146;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1381, 622);
-            this.Controls.Add(this.btnCopy);
+            this.ClientSize = new System.Drawing.Size(1485, 622);
             this.Controls.Add(this.txtOutput);
+            this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -193,14 +253,12 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOutput)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtOutput;
         private System.Windows.Forms.Button btnAddLog;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmbName;
@@ -213,6 +271,11 @@
         private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.Button btnShowConfig;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.DataGridView txtOutput;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colProj;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTime;
     }
 }
 

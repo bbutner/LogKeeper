@@ -86,7 +86,7 @@ namespace LogKeeper
 
                     reader.Close();
 
-                    txtOutput.Text += timestamp + " #" + project + " | " + name + ": " + log + "\r\n\r\n";
+                    txtOutput.Rows.Add(new[] {project, name, log, timestamp });
 
                     tempCon.Close();
 
@@ -115,13 +115,13 @@ namespace LogKeeper
                 SqlCommand loadLogs = new SqlCommand(sqlLoad, tempCon);
                 SqlDataReader reader = loadLogs.ExecuteReader();
 
-                txtOutput.ResetText();
+                txtOutput.Rows.Clear();
 
                 try
                 {
                     while (reader.Read())
                     {
-                        txtOutput.Text += reader["timestamp"] + " #" + reader["project"].ToString().Trim() + " | " + reader["name"].ToString().Trim() + ": " + reader["logmessage"] + "\r\n\r\n";
+                        txtOutput.Rows.Add(new[] { reader["project"].ToString().Trim(), reader["name"].ToString().Trim(), reader["logmessage"].ToString(), reader["timestamp"].ToString() });
                     }
                 }
                 finally
@@ -152,9 +152,16 @@ namespace LogKeeper
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
-            if (txtOutput.Text.Length > 0)
+            if (txtOutput.Rows.Count > 1)
             {
-                Clipboard.SetText(txtOutput.Text);
+                string copy = "";
+
+                foreach (DataGridViewRow row in txtOutput.Rows)
+                {
+                    copy += row.Cells["colTime"].Value + " #" + row.Cells["colProj"].Value + " | " + row.Cells["colName"].Value + ": " + row.Cells["colLog"].Value + "\r\n\r\n";
+                }
+
+                Clipboard.SetText(copy);
             }
         }
 
@@ -162,7 +169,7 @@ namespace LogKeeper
         {
             txtProject.ResetText();
             txtLogMessage.ResetText();
-            txtOutput.ResetText();
+            txtOutput.Rows.Clear();
             cmbName.Text = "";
         }
 
@@ -170,6 +177,11 @@ namespace LogKeeper
         {
             Config cfg = new Config();
             cfg.ShowDialog();
+        }
+
+        private void txtOutput_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
