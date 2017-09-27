@@ -116,5 +116,19 @@ namespace LogKeeper
                 MessageBox.Show("Please provide a project name.");
             }
         }
+
+        private void cmbName_Click(object sender, EventArgs e)
+        {
+            if (txtProject.Text.Length > 0)
+            {
+                btnLoad.PerformClick();
+            }
+        }
+
+        private void btnSearchProjects_Click(object sender, EventArgs e)
+        {
+            ProjectSearch projSearch = new ProjectSearch();
+            projSearch.ShowDialog();
+        }
     }
 }

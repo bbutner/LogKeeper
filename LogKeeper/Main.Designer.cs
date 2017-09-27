@@ -37,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtProject = new System.Windows.Forms.TextBox();
+            this.btnSearchProjects = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +62,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnSearchProjects);
             this.groupBox1.Controls.Add(this.btnLoad);
             this.groupBox1.Controls.Add(this.txtLogMessage);
             this.groupBox1.Controls.Add(this.cmbName);
@@ -102,6 +104,7 @@
             this.cmbName.Name = "cmbName";
             this.cmbName.Size = new System.Drawing.Size(186, 21);
             this.cmbName.TabIndex = 4;
+            this.cmbName.Click += new System.EventHandler(this.cmbName_Click);
             // 
             // label2
             // 
@@ -127,6 +130,16 @@
             this.txtProject.Name = "txtProject";
             this.txtProject.Size = new System.Drawing.Size(186, 20);
             this.txtProject.TabIndex = 1;
+            // 
+            // btnSearchProjects
+            // 
+            this.btnSearchProjects.Location = new System.Drawing.Point(253, 18);
+            this.btnSearchProjects.Name = "btnSearchProjects";
+            this.btnSearchProjects.Size = new System.Drawing.Size(21, 22);
+            this.btnSearchProjects.TabIndex = 7;
+            this.btnSearchProjects.Text = "?";
+            this.btnSearchProjects.UseVisualStyleBackColor = true;
+            this.btnSearchProjects.Click += new System.EventHandler(this.btnSearchProjects_Click);
             // 
             // Main
             // 
@@ -156,6 +169,7 @@
         private System.Windows.Forms.TextBox txtProject;
         private System.Windows.Forms.TextBox txtLogMessage;
         private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.Button btnSearchProjects;
     }
 }
 
