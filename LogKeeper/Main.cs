@@ -32,9 +32,15 @@ namespace LogKeeper
                 {
                     this.Close();
                 }
+                else 
+                {
+                    Config.initConnection();
+                }
+            } 
+            else 
+            {
+                Config.initConnection();
             }
-
-            Config.initConnection();
         }
 
         private void btnAddLog_Click(object sender, EventArgs e)
@@ -115,7 +121,7 @@ namespace LogKeeper
                 {
                     while (reader.Read())
                     {
-                        txtOutput.Text += reader["timestamp"] + " #" + reader["project"] + " | " + reader["name"].ToString().Trim() + ": " + reader["logmessage"] + "\r\n\r\n";
+                        txtOutput.Text += reader["timestamp"] + " #" + reader["project"].ToString().Trim() + " | " + reader["name"].ToString().Trim() + ": " + reader["logmessage"] + "\r\n\r\n";
                     }
                 }
                 finally
