@@ -52,6 +52,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 458);
             this.Controls.Add(this.lstProjects);
+            this.MaximizeBox = false;
             this.Name = "ProjectSearch";
             this.Text = "ProjectSearch";
             this.Load += new System.EventHandler(this.ProjectSearch_Load);

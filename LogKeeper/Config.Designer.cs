@@ -111,6 +111,7 @@
             this.Controls.Add(this.txtSQLUser);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
             this.Name = "Config";
             this.Text = "Config";
             this.groupBox1.ResumeLayout(false);

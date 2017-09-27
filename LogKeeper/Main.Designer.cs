@@ -160,6 +160,7 @@
             this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
             this.Name = "Main";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
