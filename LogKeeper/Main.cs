@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace LogKeeper
         {
             if (txtProject.TextLength > 0 && cmbName.Text.Length > 0)
             {
-                
+                SqlConnection tempCon = Config.getSQLCon();
             }
             else
             {

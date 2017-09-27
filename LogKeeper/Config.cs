@@ -81,7 +81,7 @@ namespace LogKeeper
             }
         }
 
-        public SqlConnection getSQLCon()
+        public static SqlConnection getSQLCon()
         {
             return new SqlConnection(conString);
         }
