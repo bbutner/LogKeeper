@@ -42,6 +42,7 @@ namespace LogKeeper
                 string name = cmbName.Text.Trim();
                 string project = txtProject.Text.Trim();
                 string log = txtLogMessage.Text.Trim();
+                string timestamp = "";
 
                 SqlConnection tempCon = Config.getSQLCon();
 
@@ -52,7 +53,22 @@ namespace LogKeeper
                     tempCon.Open();
 
                     SqlCommand insertLog = new SqlCommand(sqlInsert, tempCon);
-                    insertLog.ExecuteReader();
+                    SqlDataReader insert = insertLog.ExecuteReader();
+                    insert.Close();
+
+                    string sqlTime = "SELECT GETDATE() as time";
+                    SqlCommand getTimestamp = new SqlCommand(sqlTime, tempCon);
+                    SqlDataReader reader = getTimestamp.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        timestamp = reader["time"].ToString();
+                    }
+
+                    reader.Close();
+
+                    txtOutput.Text += timestamp + " #" + project + " | " + name + ": " + log + "\r\n\r\n";
+
                     tempCon.Close();
 
                     txtLogMessage.ResetText();
@@ -86,7 +102,7 @@ namespace LogKeeper
                 {
                     while (reader.Read())
                     {
-                        txtOutput.Text += reader["timestamp"] + " #" + reader["project"] + " | " + reader["name"].ToString().Trim() + ": " + reader["logmessage"] + "\r\n";
+                        txtOutput.Text += reader["timestamp"] + " #" + reader["project"] + " | " + reader["name"].ToString().Trim() + ": " + reader["logmessage"] + "\r\n\r\n";
                     }
                 }
                 finally
