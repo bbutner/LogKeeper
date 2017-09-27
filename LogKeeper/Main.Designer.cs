@@ -32,7 +32,7 @@
             this.btnAddLog = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnLoad = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtLogMessage = new System.Windows.Forms.TextBox();
             this.cmbName = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,7 +62,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnLoad);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtLogMessage);
             this.groupBox1.Controls.Add(this.cmbName);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -83,14 +83,15 @@
             this.btnLoad.TabIndex = 6;
             this.btnLoad.Text = "Load";
             this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
-            // textBox1
+            // txtLogMessage
             // 
-            this.textBox1.Location = new System.Drawing.Point(9, 100);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(616, 456);
-            this.textBox1.TabIndex = 5;
+            this.txtLogMessage.Location = new System.Drawing.Point(9, 100);
+            this.txtLogMessage.Multiline = true;
+            this.txtLogMessage.Name = "txtLogMessage";
+            this.txtLogMessage.Size = new System.Drawing.Size(616, 456);
+            this.txtLogMessage.TabIndex = 5;
             // 
             // cmbName
             // 
@@ -153,7 +154,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtProject;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtLogMessage;
         private System.Windows.Forms.Button btnLoad;
     }
 }

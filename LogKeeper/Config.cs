@@ -20,10 +20,10 @@ namespace LogKeeper
             InitializeComponent();
         }
 
-        private string sqlDB;
-        private string sqlUser;
-        private string sqlPass;
-        private string conString;
+        private static string sqlDB;
+        private static string sqlUser;
+        private static string sqlPass;
+        private static string conString;
 
         private void btnSQLConnect_Click(object sender, EventArgs e)
         {
@@ -79,6 +79,16 @@ namespace LogKeeper
                     MessageBox.Show("Couldn't load instances.");
                 }
             }
+        }
+
+        public static void initConnection()
+        {
+            string[] cfgInput = File.ReadAllLines(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "/Config.txt");
+            sqlDB = cfgInput[0].Replace("DBSERVER=", "");
+            sqlUser = cfgInput[1].Replace("USER=", "");
+            sqlPass = cfgInput[2].Replace("PASS=", "");
+
+            conString = "Data Source=" + sqlDB + ";Initial Catalog = LogKeeper; User ID = " + sqlUser + "; Password = " + sqlPass;
         }
 
         public static SqlConnection getSQLCon()
