@@ -80,5 +80,10 @@ namespace LogKeeper
                 }
             }
         }
+
+        public SqlConnection getSQLCon()
+        {
+            return new SqlConnection(conString);
+        }
     }
 }
