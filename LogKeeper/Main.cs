@@ -92,6 +92,7 @@ namespace LogKeeper
                 finally
                 {
                     reader.Close();
+                    tempCon.Close();
                 }
             }
             else
