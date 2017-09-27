@@ -20,10 +20,10 @@ namespace LogKeeper
             InitializeComponent();
         }
 
-        private static string sqlDB;
-        private static string sqlUser;
-        private static string sqlPass;
-        private static string conString;
+        private static string sqlDB = "";
+        private static string sqlUser = "";
+        private static string sqlPass = "";
+        private static string conString = "";
 
         private void btnSQLConnect_Click(object sender, EventArgs e)
         {
@@ -94,6 +94,16 @@ namespace LogKeeper
         public static SqlConnection getSQLCon()
         {
             return new SqlConnection(conString);
+        }
+
+        private void Config_Load(object sender, EventArgs e)
+        {
+            if (sqlDB.Length > 0 && sqlUser.Length > 0 && sqlPass.Length > 0)
+            {
+                txtSQLUser.Text = sqlUser;
+                txtSQLPass.Text = sqlPass;
+                cmbInstances.Text = sqlDB;
+            }
         }
     }
 }

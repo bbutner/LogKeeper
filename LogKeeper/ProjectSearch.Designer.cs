@@ -55,7 +55,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "ProjectSearch";
-            this.Text = "ProjectSearch";
+            this.Text = "Project List";
             this.Load += new System.EventHandler(this.ProjectSearch_Load);
             this.ResumeLayout(false);
 

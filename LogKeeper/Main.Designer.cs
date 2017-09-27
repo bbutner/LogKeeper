@@ -39,6 +39,8 @@
             this.txtProject = new System.Windows.Forms.TextBox();
             this.btnSearchProjects = new System.Windows.Forms.Button();
             this.btnCopy = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.btnShowConfig = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +65,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnShowConfig);
+            this.groupBox1.Controls.Add(this.btnReset);
             this.groupBox1.Controls.Add(this.btnSearchProjects);
             this.groupBox1.Controls.Add(this.btnLoad);
             this.groupBox1.Controls.Add(this.txtLogMessage);
@@ -80,7 +84,7 @@
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(516, 12);
+            this.btnLoad.Location = new System.Drawing.Point(280, 16);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(112, 27);
             this.btnLoad.TabIndex = 6;
@@ -152,6 +156,26 @@
             this.btnCopy.UseVisualStyleBackColor = true;
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(512, 16);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(113, 27);
+            this.btnReset.TabIndex = 9;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // btnShowConfig
+            // 
+            this.btnShowConfig.Location = new System.Drawing.Point(512, 59);
+            this.btnShowConfig.Name = "btnShowConfig";
+            this.btnShowConfig.Size = new System.Drawing.Size(113, 27);
+            this.btnShowConfig.TabIndex = 10;
+            this.btnShowConfig.Text = "Config";
+            this.btnShowConfig.UseVisualStyleBackColor = true;
+            this.btnShowConfig.Click += new System.EventHandler(this.btnShowConfig_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -163,7 +187,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Main";
-            this.Text = "Form1";
+            this.Text = "Log Keeper";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -185,6 +209,8 @@
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button btnSearchProjects;
         private System.Windows.Forms.Button btnCopy;
+        private System.Windows.Forms.Button btnShowConfig;
+        private System.Windows.Forms.Button btnReset;
     }
 }
 

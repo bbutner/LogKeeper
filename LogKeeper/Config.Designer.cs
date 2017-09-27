@@ -115,6 +115,7 @@
             this.MaximizeBox = false;
             this.Name = "Config";
             this.Text = "Config";
+            this.Load += new System.EventHandler(this.Config_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -148,5 +148,19 @@ namespace LogKeeper
         {
             Clipboard.SetText(txtOutput.Text);
         }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            txtProject.ResetText();
+            txtLogMessage.ResetText();
+            txtOutput.ResetText();
+            cmbName.Text = "";
+        }
+
+        private void btnShowConfig_Click(object sender, EventArgs e)
+        {
+            Config cfg = new Config();
+            cfg.ShowDialog();
+        }
     }
 }
