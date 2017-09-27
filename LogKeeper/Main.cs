@@ -14,6 +14,8 @@ namespace LogKeeper
 {
     public partial class Main : Form
     {
+        private string lastProject= "";
+
         public Main()
         {
             InitializeComponent();
@@ -43,6 +45,17 @@ namespace LogKeeper
                 string project = txtProject.Text.Trim();
                 string log = txtLogMessage.Text.Trim();
                 string timestamp = "";
+
+                if (lastProject.Length == 0)
+                {
+                    lastProject = project;
+                }
+
+                if (lastProject != project)
+                {
+                    txtOutput.ResetText();
+                    lastProject = project;
+                }
 
                 SqlConnection tempCon = Config.getSQLCon();
 
