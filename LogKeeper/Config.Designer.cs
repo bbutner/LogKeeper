@@ -67,6 +67,7 @@
             // 
             this.txtSQLPass.Location = new System.Drawing.Point(113, 53);
             this.txtSQLPass.Name = "txtSQLPass";
+            this.txtSQLPass.PasswordChar = '*';
             this.txtSQLPass.Size = new System.Drawing.Size(202, 20);
             this.txtSQLPass.TabIndex = 3;
             // 
