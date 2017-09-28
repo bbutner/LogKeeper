@@ -15,6 +15,7 @@ namespace LogKeeper
     public partial class Main : Form
     {
         private string lastProject= "";
+        private int timeColWidth;
 
         public Main()
         {
@@ -40,6 +41,7 @@ namespace LogKeeper
             else 
             {
                 Config.initConnection();
+                timeColWidth = txtOutput.Columns["colProj"].Width;
             }
         }
 
@@ -124,6 +126,10 @@ namespace LogKeeper
                         txtOutput.Rows.Add(new[] { reader["project"].ToString().Trim(), reader["name"].ToString().Trim(), reader["logmessage"].ToString(), reader["timestamp"].ToString() });
                     }
                 }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
                 finally
                 {
                     reader.Close();
@@ -156,12 +162,24 @@ namespace LogKeeper
             {
                 string copy = "";
 
-                foreach (DataGridViewRow row in txtOutput.Rows)
+                if (chkNoTime.Checked)
                 {
-                    copy += row.Cells["colTime"].Value + " #" + row.Cells["colProj"].Value + " | " + row.Cells["colName"].Value + ": " + row.Cells["colLog"].Value + "\r\n\r\n";
-                }
+                    foreach (DataGridViewRow row in txtOutput.Rows)
+                    {
+                        copy += "#" + row.Cells["colProj"].Value + " | " + row.Cells["colName"].Value + ": " + row.Cells["colLog"].Value + "\r\n\r\n";
+                    }
 
-                Clipboard.SetText(copy);
+                    Clipboard.SetText(copy);
+                }
+                else
+                {
+                    foreach (DataGridViewRow row in txtOutput.Rows)
+                    {
+                        copy += row.Cells["colTime"].Value + " #" + row.Cells["colProj"].Value + " | " + row.Cells["colName"].Value + ": " + row.Cells["colLog"].Value + "\r\n\r\n";
+                    }
+
+                    Clipboard.SetText(copy);
+                }
             }
         }
 
@@ -181,7 +199,23 @@ namespace LogKeeper
 
         private void txtOutput_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            int row = txtOutput.CurrentCell.RowIndex;
+            int col = txtOutput.CurrentCell.ColumnIndex;
 
+            Clipboard.SetText(txtOutput.Rows[row].Cells[col].Value.ToString());
+        }
+
+        private void chkNoTime_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkNoTime.Checked)
+            {
+                txtOutput.Columns["colLog"].Width = txtOutput.Columns["colLog"].Width + timeColWidth;
+                txtOutput.Columns["colTime"].Width = 0;
+            } else
+            {
+                txtOutput.Columns["colTime"].Width = timeColWidth;
+                txtOutput.Columns["colLog"].Width = txtOutput.Columns["colLog"].Width - timeColWidth;
+            }
         }
     }
 }

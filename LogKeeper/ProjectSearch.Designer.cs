@@ -42,10 +42,12 @@
             this.lstProjects.Size = new System.Drawing.Size(566, 434);
             this.lstProjects.TabIndex = 0;
             this.lstProjects.UseCompatibleStateImageBehavior = false;
+            this.lstProjects.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Project";
+            this.columnHeader1.Width = 556;
             // 
             // ProjectSearch
             // 

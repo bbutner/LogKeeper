@@ -46,10 +46,11 @@
             this.txtProject = new System.Windows.Forms.TextBox();
             this.btnCopy = new System.Windows.Forms.Button();
             this.txtOutput = new System.Windows.Forms.DataGridView();
+            this.chkNoTime = new System.Windows.Forms.CheckBox();
+            this.colTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colProj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLog = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtOutput)).BeginInit();
             this.SuspendLayout();
@@ -85,7 +86,7 @@
             // 
             // btnShowConfig
             // 
-            this.btnShowConfig.Location = new System.Drawing.Point(512, 59);
+            this.btnShowConfig.Location = new System.Drawing.Point(517, 16);
             this.btnShowConfig.Name = "btnShowConfig";
             this.btnShowConfig.Size = new System.Drawing.Size(113, 27);
             this.btnShowConfig.TabIndex = 10;
@@ -95,7 +96,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(512, 16);
+            this.btnReset.Location = new System.Drawing.Point(398, 16);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(113, 27);
             this.btnReset.TabIndex = 9;
@@ -184,10 +185,10 @@
             this.txtOutput.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.txtOutput.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.txtOutput.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colTime,
             this.colProj,
             this.colName,
-            this.colLog,
-            this.colTime});
+            this.colLog});
             this.txtOutput.Location = new System.Drawing.Point(652, 11);
             this.txtOutput.Name = "txtOutput";
             this.txtOutput.RowHeadersVisible = false;
@@ -195,10 +196,32 @@
             this.txtOutput.TabIndex = 9;
             this.txtOutput.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.txtOutput_CellContentClick);
             // 
-            // colProj
+            // chkNoTime
+            // 
+            this.chkNoTime.AutoSize = true;
+            this.chkNoTime.Location = new System.Drawing.Point(1288, 584);
+            this.chkNoTime.Name = "chkNoTime";
+            this.chkNoTime.Size = new System.Drawing.Size(66, 17);
+            this.chkNoTime.TabIndex = 10;
+            this.chkNoTime.Text = "No Time";
+            this.chkNoTime.UseVisualStyleBackColor = true;
+            this.chkNoTime.CheckedChanged += new System.EventHandler(this.chkNoTime_CheckedChanged);
+            // 
+            // colTime
             // 
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.colProj.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colTime.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colTime.FillWeight = 203.0457F;
+            this.colTime.HeaderText = "Timestamp";
+            this.colTime.Name = "colTime";
+            this.colTime.ReadOnly = true;
+            this.colTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.colTime.Width = 146;
+            // 
+            // colProj
+            // 
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colProj.DefaultCellStyle = dataGridViewCellStyle2;
             this.colProj.FillWeight = 60F;
             this.colProj.HeaderText = "Project";
             this.colProj.Name = "colProj";
@@ -207,8 +230,8 @@
             // 
             // colName
             // 
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.colName.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colName.DefaultCellStyle = dataGridViewCellStyle3;
             this.colName.FillWeight = 110.6774F;
             this.colName.HeaderText = "Name";
             this.colName.Name = "colName";
@@ -217,8 +240,8 @@
             // 
             // colLog
             // 
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.colLog.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colLog.DefaultCellStyle = dataGridViewCellStyle4;
             this.colLog.FillWeight = 21.08025F;
             this.colLog.HeaderText = "Log";
             this.colLog.Name = "colLog";
@@ -226,22 +249,12 @@
             this.colLog.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.colLog.Width = 472;
             // 
-            // colTime
-            // 
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.colTime.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colTime.FillWeight = 203.0457F;
-            this.colTime.HeaderText = "Timestamp";
-            this.colTime.Name = "colTime";
-            this.colTime.ReadOnly = true;
-            this.colTime.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.colTime.Width = 146;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1485, 622);
+            this.Controls.Add(this.chkNoTime);
             this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.groupBox1);
@@ -255,6 +268,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtOutput)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -272,10 +286,11 @@
         private System.Windows.Forms.Button btnShowConfig;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.DataGridView txtOutput;
+        private System.Windows.Forms.CheckBox chkNoTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colProj;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTime;
     }
 }
 
