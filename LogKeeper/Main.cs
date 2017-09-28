@@ -199,10 +199,12 @@ namespace LogKeeper
 
         private void txtOutput_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int row = txtOutput.CurrentCell.RowIndex;
-            int col = txtOutput.CurrentCell.ColumnIndex;
+            if (txtOutput.Rows.Count > 0) {
+                int row = txtOutput.CurrentCell.RowIndex;
+                int col = txtOutput.CurrentCell.ColumnIndex;
 
-            Clipboard.SetText(txtOutput.Rows[row].Cells[col].Value.ToString());
+                Clipboard.SetText(txtOutput.Rows[row].Cells[col].Value.ToString());
+            }
         }
 
         private void chkNoTime_CheckedChanged(object sender, EventArgs e)
